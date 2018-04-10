@@ -13,6 +13,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        print("速度快本反馈给快递反馈速度".ytt.MD5())
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

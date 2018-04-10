@@ -14,6 +14,7 @@
 		708CA66F207C4BD500B9FE68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 708CA66D207C4BD500B9FE68 /* LaunchScreen.storyboard */; };
 		708CA67A207C4BD500B9FE68 /* EncryptToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708CA679207C4BD500B9FE68 /* EncryptToolsTests.swift */; };
 		708CA685207C4BD500B9FE68 /* EncryptToolsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708CA684207C4BD500B9FE68 /* EncryptToolsUITests.swift */; };
+		708CA694207C4C7B00B9FE68 /* EncryptTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708CA693207C4C7B00B9FE68 /* EncryptTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		708CA680207C4BD500B9FE68 /* EncryptToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EncryptToolsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		708CA684207C4BD500B9FE68 /* EncryptToolsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptToolsUITests.swift; sourceTree = "<group>"; };
 		708CA686207C4BD500B9FE68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		708CA693207C4C7B00B9FE68 /* EncryptTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptTools.swift; sourceTree = "<group>"; };
+		708CA695207C4FFA00B9FE68 /* EncryptTools-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EncryptTools-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 		708CA658207C4BD300B9FE68 = {
 			isa = PBXGroup;
 			children = (
+				708CA692207C4C3900B9FE68 /* Example */,
 				708CA663207C4BD300B9FE68 /* EncryptTools */,
 				708CA678207C4BD500B9FE68 /* EncryptToolsTests */,
 				708CA683207C4BD500B9FE68 /* EncryptToolsUITests */,
@@ -97,12 +101,7 @@
 		708CA663207C4BD300B9FE68 /* EncryptTools */ = {
 			isa = PBXGroup;
 			children = (
-				708CA664207C4BD300B9FE68 /* AppDelegate.swift */,
-				708CA666207C4BD300B9FE68 /* ViewController.swift */,
-				708CA668207C4BD300B9FE68 /* Main.storyboard */,
-				708CA66B207C4BD500B9FE68 /* Assets.xcassets */,
-				708CA66D207C4BD500B9FE68 /* LaunchScreen.storyboard */,
-				708CA670207C4BD500B9FE68 /* Info.plist */,
+				708CA693207C4C7B00B9FE68 /* EncryptTools.swift */,
 			);
 			path = EncryptTools;
 			sourceTree = "<group>";
@@ -123,6 +122,20 @@
 				708CA686207C4BD500B9FE68 /* Info.plist */,
 			);
 			path = EncryptToolsUITests;
+			sourceTree = "<group>";
+		};
+		708CA692207C4C3900B9FE68 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				708CA664207C4BD300B9FE68 /* AppDelegate.swift */,
+				708CA666207C4BD300B9FE68 /* ViewController.swift */,
+				708CA668207C4BD300B9FE68 /* Main.storyboard */,
+				708CA66B207C4BD500B9FE68 /* Assets.xcassets */,
+				708CA66D207C4BD500B9FE68 /* LaunchScreen.storyboard */,
+				708CA670207C4BD500B9FE68 /* Info.plist */,
+				708CA695207C4FFA00B9FE68 /* EncryptTools-Bridging-Header.h */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +206,7 @@
 				TargetAttributes = {
 					708CA660207C4BD300B9FE68 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 					708CA674207C4BD500B9FE68 = {
 						CreatedOnToolsVersion = 9.3;
@@ -256,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708CA694207C4C7B00B9FE68 /* EncryptTools.swift in Sources */,
 				708CA667207C4BD300B9FE68 /* ViewController.swift in Sources */,
 				708CA665207C4BD300B9FE68 /* AppDelegate.swift in Sources */,
 			);
@@ -430,14 +445,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = EncryptTools/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AndyCuiYTT.EncryptTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Example/EncryptTools-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,14 +465,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = EncryptTools/Info.plist;
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = AndyCuiYTT.EncryptTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Example/EncryptTools-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
