@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  EncryptTools
 //
-//  Created by qiuweniOS on 2018/4/10.
+//  Created by AndyCui on 2018/4/10.
 //  Copyright © 2018年 AndyCuiYTT. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        print("速度快本反馈给快递反馈速度".ytt.MD5())
+        print(String(data:("速度快本反馈给快递反馈速度".ytt.XOR(encryptKeyStr: "qwer")?.ytt.XOR(encryptKeyStr: "qwer"))!, encoding: .utf8))
         
         
     }
