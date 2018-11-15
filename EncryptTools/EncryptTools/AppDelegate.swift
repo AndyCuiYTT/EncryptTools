@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  EncryptTools
 //
-//  Created by AndyCui on 2018/4/10.
-//  Copyright © 2018年 AndyCuiYTT. All rights reserved.
+//  Created by qiuweniOS on 2018/11/15.
+//  Copyright © 2018 AndyCuiYTT. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }

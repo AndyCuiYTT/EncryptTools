@@ -45,12 +45,34 @@ class EncryptTools<Element> {
                 return nil
             }
         }else if let image = obj as? UIImage {
-            guard let imageData = UIImagePNGRepresentation(image) else {
+            guard let imageData = image.pngData() else {
                 return nil
             }
             return MD5_Encrypt(imageData)
         }else if let data = obj as? Data {
             return MD5_Encrypt(data)
+        }
+        
+        return nil
+    }
+    
+    /// 对数据进行 SHA1 加密
+    ///
+    /// - Returns: 加密后字符串
+    func SHA1() -> String? {
+        if let str = obj as? String {
+            if let data = str.data(using: .utf8) {
+                return SHA1_Encrypt(data)
+            }else {
+                return nil
+            }
+        }else if let image = obj as? UIImage {
+            guard let imageData = image.pngData() else {
+                return nil
+            }
+            return SHA1_Encrypt(imageData)
+        }else if let data = obj as? Data {
+            return SHA1_Encrypt(data)
         }
         
         return nil
@@ -69,7 +91,7 @@ class EncryptTools<Element> {
                 return nil
             }
         }else if let image = obj as? UIImage {
-            guard let imageData = UIImagePNGRepresentation(image) else {
+            guard let imageData = image.pngData() else {
                 return nil
             }
             return XOR_Encrypt(imageData, encryptKeyStr: encryptKeyStr)
@@ -89,7 +111,22 @@ class EncryptTools<Element> {
         for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
             resultStr.appendFormat("%02x", result[i])
         }
-        return resultStr.lowercased
+        cStr.deallocate()
+        result.deallocate()
+        return resultStr as String
+    }
+    
+    private func SHA1_Encrypt(_ data: Data) -> String {
+        let cStr = (data as NSData).bytes
+        let result = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_SHA1_DIGEST_LENGTH))
+        CC_SHA1(cStr, CC_LONG(data.count), result)
+        let resultStr: NSMutableString = NSMutableString()
+        for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
+            resultStr.appendFormat("%02x", result[i])
+        }
+        cStr.deallocate()
+        result.deallocate()
+        return resultStr as String
     }
     
     private func XOR_Encrypt(_ data: Data, encryptKeyStr: String) -> Data? {
