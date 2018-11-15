@@ -12,7 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        print("的点点滴滴".ytt.MD5())
+        print("的点点滴滴".ytt.SHA1())
+   
+
     }
 
 

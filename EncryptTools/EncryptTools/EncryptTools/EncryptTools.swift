@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CommonCrypto
 
 extension String {
     var ytt: EncryptTools<String> {
@@ -104,29 +105,40 @@ class EncryptTools<Element> {
     
     private func MD5_Encrypt(_ data: Data) -> String {
     
-        let cStr = (data as NSData).bytes
-        let result = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_MD5_DIGEST_LENGTH))
-        CC_MD5(cStr, CC_LONG(data.count), result)
-        let resultStr: NSMutableString = NSMutableString()
-        for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
-            resultStr.appendFormat("%02x", result[i])
+        return data.withUnsafeBytes { (cStr: UnsafePointer<UInt8>) -> String in
+            let result = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_MD5_DIGEST_LENGTH))
+            CC_MD5(cStr, CC_LONG(data.count), result)
+            let resultStr: NSMutableString = NSMutableString()
+            for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
+                resultStr.appendFormat("%02x", result[i])
+            }
+            result.deallocate()
+            return resultStr as String
         }
-        cStr.deallocate()
-        result.deallocate()
-        return resultStr as String
+        
+//        let cStr = (data as NSData).bytes
+//        let result = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_MD5_DIGEST_LENGTH))
+//        CC_MD5(cStr, CC_LONG(data.count), result)
+//        let resultStr: NSMutableString = NSMutableString()
+//        for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
+//            resultStr.appendFormat("%02x", result[i])
+//        }
+//        result.deallocate()
+//        return resultStr as String
     }
     
     private func SHA1_Encrypt(_ data: Data) -> String {
-        let cStr = (data as NSData).bytes
-        let result = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_SHA1_DIGEST_LENGTH))
-        CC_SHA1(cStr, CC_LONG(data.count), result)
-        let resultStr: NSMutableString = NSMutableString()
-        for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
-            resultStr.appendFormat("%02x", result[i])
+//        let cStr = (data as NSData).bytes
+        return data.withUnsafeBytes { (cStr: UnsafePointer<UInt8>) -> String in
+            let result = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(CC_SHA1_DIGEST_LENGTH))
+            CC_SHA1(cStr, CC_LONG(data.count), result)
+            let resultStr: NSMutableString = NSMutableString()
+            for i in 0 ..< Int(CC_MD5_DIGEST_LENGTH) {
+                resultStr.appendFormat("%02x", result[i])
+            }
+            result.deallocate()
+            return resultStr as String
         }
-        cStr.deallocate()
-        result.deallocate()
-        return resultStr as String
     }
     
     private func XOR_Encrypt(_ data: Data, encryptKeyStr: String) -> Data? {
